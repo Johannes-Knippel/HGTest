@@ -1,2 +1,36 @@
 ﻿  Question01.cpp
-  Question01.vcxproj -> C:\Projects\Unreal\HGProgrammerTest\GameDeveloperTest_VS2019\Question01\Binaries\x64Debug\Question01.exe
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30037\include\xutility(4589,1): error C2679: Binärer Operator "=": Es konnte kein Operator gefunden werden, der einen rechtsseitigen Operanden vom Typ "const _Ty" akzeptiert (oder keine geeignete Konvertierung möglich)
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30037\include\vector(1222,36): message : kann "std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> &std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>>::operator =(std::initializer_list<_Ty>)" sein
+          with
+          [
+              _Ty=std::vector<int,std::allocator<int>>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30037\include\vector(1214,36): message : oder "std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> &std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>>::operator =(const std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> &)"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30037\include\vector(702,36): message : oder "std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> &std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>>::operator =(std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> &&) noexcept(<expr>)"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30037\include\xutility(4589,1): message : bei Anpassung der Argumentliste "(_Ty, const _Ty)"
+          with
+          [
+              _Ty=std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>>
+          ]
+          and
+          [
+              _Ty=int
+          ]
+C:\Projects\CPP\HGTest\Source\Question01.cpp(36): message : Siehe Verweis auf die gerade kompilierte Instanziierung "void std::fill<_Ty*,int>(const _FwdIt,const _FwdIt,const int &)" der Funktions-Vorlage.
+          with
+          [
+              _Ty=std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>>,
+              _FwdIt=std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30037\include\algorithm(271): message : Siehe Verweis auf die gerade kompilierte Instanziierung "void main::<lambda_0d3974ad44cf18938bff818ca1ef6934>::operator ()<std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>>[3]>(std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> (&)[3]) const" der Funktions-Vorlage.
+C:\Projects\CPP\HGTest\Source\Question01.cpp(36): message : Siehe Verweis auf die gerade kompilierte Instanziierung "_Fn std::for_each<_Ty(*),main::<lambda_0d3974ad44cf18938bff818ca1ef6934>>(_InIt,_InIt,_Fn)" der Funktions-Vorlage.
+          with
+          [
+              _Fn=main::<lambda_0d3974ad44cf18938bff818ca1ef6934>,
+              _Ty=std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> [3],
+              _InIt=std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>> (*)[3]
+          ]

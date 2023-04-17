@@ -9,7 +9,7 @@
 
 
 /*
- * We tried to call the init function from the parent class which then tries to call the overriden function from the child class resulting in referencing itself.
+ * One tried to call the init function from the parent class. The function tries to call the overriden function from the child class resulting in referencing itself.
  * Instead we want to call the Init() function from our CPlayer that overrides the parents CActors Init() function.
  */
 
@@ -39,7 +39,7 @@ public:
 
     virtual void Update() override
     {
-        std::cout << "Player is moving with " << movementSpeed << " metres per second" << std::endl;
+        std::cout << "Player is moving with " << movementSpeed << " meters per second" << std::endl;
     }
 
 private:

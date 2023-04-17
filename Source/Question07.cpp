@@ -27,7 +27,7 @@ public:
     float x, y, z;
 
 	//using a very simple linear addition
-	CVector3 operator+(CVector3& v)
+	CVector3 operator+(const CVector3& v)
 	{
 		CVector3 vector3;
         vector3.x = this->x + v.x;
@@ -40,10 +40,10 @@ public:
 
 int main(int argc, char* argv[])
 {
-    CVector3 a(2.3f, 0.1f, 9.0f), b(14.8f, 65.1f, 106.6f);
+    const CVector3 a(2.3f, 0.1f, 9.0f), b(14.8f, 65.1f, 106.6f);
 
     // Uncomment to test your solution
-    CVector3 c = CMath::Add<CVector3>(a, b);
+    const CVector3 c = CMath::Add<CVector3>(a, b);
     std::cout << c.x << ", " << c.y << ", " << c.z << std::endl;
 
     return 0;

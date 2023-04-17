@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Projects\Unreal\HGProgrammerTest\GameDeveloperTest_VS2019\Question01\Binaries\x64Debug\Question01.exe</FullPath>
+      <FullPath>C:\Projects\CPP\HGTest\GameDeveloperTest_VS2019\Question01\Binaries\x64Debug\Question01.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

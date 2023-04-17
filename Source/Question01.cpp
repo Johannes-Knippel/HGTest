@@ -1,7 +1,6 @@
 /*
     C++ Question 01
     ---------------
-
     Unify the definitions of the two functions into one.
 */
 
@@ -34,12 +33,12 @@
 template<typename k> float GetAverage(k* num, int count)
 {
     float sum = 0.0f;
-        for (int i = 0; i < count; ++i)
-        {
-            sum += num[i]; //conversion from int to float may result in some loss of precision
-        }
-    
-        return sum / count;
+    for (int i = 0; i < count; ++i)
+    {
+        sum += static_cast<float>(num[i]);  //conversion from int to float may result in some loss of precision therefore we cast it to be a float.
+    }
+
+    return sum / static_cast<float>(count); 
 };
 
 int main(int argc, char* argv[])

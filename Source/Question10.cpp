@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <complex>
+#include <cmath>
 
 #define RAD_TO_DEG 57.295779513f
 
@@ -20,53 +21,47 @@ struct SVector3
     }
 
     float x, y, z;
-    SVector3 operator-(SVector3& v)
-    {
-        SVector3 vector3;
-        vector3.x = this->x - v.x;
-        vector3.y = this->y - v.y;
-        vector3.z = this->z - v.z;
-
-        return vector3;
-    }
-    SVector3 operator*(SVector3& v)
-    {
-        SVector3 vector3;
-        vector3.x = this->x * v.x;
-        vector3.y = this->y * v.y;
-        vector3.z = this->z * v.z;
-
-        return vector3;
-    }
 };
 
 class CMath
 {
-public: // haven't had much time to think about that unfortunately, had a lot of parallel meetings today. 
-    static void CalculateRotation(SVector3& o, SVector3& a, SVector3& b, SVector3& axis, float& angle)
+public: 
+    static void CalculateRotation(const SVector3& o, const SVector3& a, const SVector3& b, SVector3& axis, float& angle)
     {
-        // angle between oa and ob
-        SVector3 oa = o - a;
-        SVector3 ob = o - b;
-        double v3 = static_cast<double>(oa.x) * static_cast<double>(oa.x) + static_cast<double>(oa.y) * static_cast<double>(oa.y) + static_cast<double>(oa.z) * static_cast<double>(oa.z); //casting to 8 byte type to avoid overflow
-        double v4 = static_cast<double>(ob.x) * static_cast<double>(ob.x) + static_cast<double>(ob.y) * static_cast<double>(ob.y) + static_cast<double>(ob.z) * static_cast<double>(ob.z);
-        SVector3 d = oa - ob;
-        angle = std::acos(std::min(1.0, std::max(-1.0,
-            (v3 + v4 - (static_cast<double>(d.x) * static_cast<double>(d.x) + static_cast<double>(d.y) * static_cast<double>(d.y) + static_cast<double>(d.z) * static_cast<double>(d.z))) /
-            (2 * std::sqrt(v3) * std::sqrt(v4))))) * RAD_TO_DEG;
+    	//direction vectors from origin to a and b
+        const SVector3 dirA = { a.x - o.x, a.y - o.y, a.z - o.z };
+		const SVector3 dirB = { b.x - o.x, b.y - o.y, b.z - o.z };
 
-        std::cout << "Angle: " << angle << std::endl;
+    	//cross product of direction vecs to get rotation axis
+        axis = { dirA.y * dirB.z - dirA.z * dirB.y,
+                        dirA.z * dirB.x - dirA.x - dirB.z,
+                        dirA.x * dirB.y - dirA.y * dirB.x };
 
-    	// find axis
-        axis = oa * ob;
+    	//normalize axis vec
+        const float axisLength = std::sqrt(axis.x * axis.x + axis.y * axis.y + axis.z * axis.z);
+    	if(axisLength > 0.0f)
+    	{
+            axis.x /= axisLength;
+            axis.y /= axisLength;
+            axis.z /= axisLength;
+    	}
+
+    	//get angle using dot product of direction vectors
+        const float dotProd = dirA.x * dirB.x + dirA.y * dirB.y + dirA.z * dirB.z;
+        const float checkAngle = std::acos(dotProd);
+
+    	if (!isnan(checkAngle))
+    	{
+            angle = checkAngle * RAD_TO_DEG;
+    	}
     }
 };
 
 int main(int argc, char* argv[])
 {
-    SVector3 o = { 2.0f, 2.0f, 2.0f };
-    SVector3 a = { 1.0f, 1.0f, 1.0f };
-    SVector3 b = { 0.5f, 0.0f, 1.5f };
+    const SVector3 o = { 0.0f, 0.0f, 1.0f };
+    const SVector3 a = { 1.0f, 1.0f, 1.0f };
+    const SVector3 b = { 0.5f, 0.0f, 1.5f };
 
     SVector3 axis = {};
     float angle = 0.0f;
